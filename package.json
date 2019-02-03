@@ -1,17 +1,24 @@
 {
   "name": "vue-input-groups",
   "version": "0.1.0",
-  "private": true,
+  "main": "./dist/vue-input-groups.common.js",
+  "files": [
+    "dist/*"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "library-build": "vue-cli-service build --target lib --name VueInputGroups ./src/components/InputGroup.vue"
   },
   "dependencies": {
-    "vue": "^2.5.22"
+    "vue": "^2.5.22",
+    "vue-multiselect": "^2.1.3",
+    "vue-tel-input": "^2.0.13"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.3.0",
     "@vue/cli-service": "^3.3.0",
+    "mini-css-extract-plugin": "^0.5.0",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.1.0",
     "vue-template-compiler": "^2.5.21"

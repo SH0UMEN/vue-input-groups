@@ -1,28 +1,37 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div>
+        <input-group v-model="values"
+                     :fields="fields">
+        </input-group>
+        {{ values }}
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+    import inputGroup from './components/InputGroup'
 
-export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
-}
+    export default {
+        name: 'app',
+        components: {
+            inputGroup
+        },
+        data() {
+            return {
+                values: {
+                    name: ""
+                },
+                fields: {
+                    name: {
+                        type: "text",
+                        validation: {
+                            required: "Это обязательное поле"
+                        },
+                        config: {
+                            warnY: 'bottom'
+                        }
+                    }
+                }
+            }
+        }
+    }
 </script>
-
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
