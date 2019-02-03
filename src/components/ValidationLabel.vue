@@ -1,7 +1,8 @@
 <template>
-  <div>
-    <label class="vue-input-validation"
-           :class="[field.customLabelClass, warnX, warnY, errors.length > 0 ? 'invalid' : '', isMobile ? 'mobile' : '']"
+  <div class="validation-wrapper"
+       :class="field.customWrapperClass">
+    <label class="validation-label"
+           :class="[field.customLabelClass, warnX, warnY, (errors.length > 0 && showWarnings) ? 'invalid' : '', isMobile ? 'mobile' : '']"
            :for="field.type=='tel' ? 'helloPupsik' : ''">
       <!-- Field -->
       <input v-if="field.type=='text' || field.type=='password' || field.type=='email' || field.type=='number'"
@@ -65,7 +66,7 @@
 
       <!-- Error view -->
       <transition name="error">
-        <div v-if="errors.length > 0" class="warning">
+        <div v-if="errors.length > 0 && showWarnings" class="warning">
           <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                width="24" height="24"
                viewBox="0 0 224 224"
@@ -106,11 +107,23 @@
       isMobile: {
         type: Boolean,
         default: false
-      }
+      },
+      showWarnings: Boolean
     },
     components: {
       Multiselect,
       Telinput
+    },
+    watch: {
+      showWarnngs() {
+        if(this.showWarnings) {
+          if(this.field.type == 'tel') {
+            this.validatePhone();
+          } else {
+            this.validate();
+          }
+        }
+      }
     },
     data() {
       return {
@@ -194,8 +207,7 @@
 
 
 <style lang="sass">
-
-  .vue-input-validation
+  .validation-label
     display: block
     position: relative
     font-size: 16px

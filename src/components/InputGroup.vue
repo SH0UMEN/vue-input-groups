@@ -7,7 +7,8 @@
                      v-model="model[i]"
                      :ref="i+'-field'"
                      :isMobile="isMobile"
-                     @validated="fieldValidated(i, $event)">
+                     @validated="fieldValidated(i, $event)"
+                     :showWarnings="showWarnings">
     </ValidationLabel>
   </div>
 </template>
@@ -20,6 +21,10 @@
     props: {
       fields: Object,
       value: Object,
+      showWarnings: {
+        type: Boolean,
+        default: true
+      },
       breakpoint: {
         type: Number,
         default: 576

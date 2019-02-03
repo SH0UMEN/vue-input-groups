@@ -1,9 +1,13 @@
 <template>
     <div>
         <input-group v-model="values"
-                     :fields="fields">
+                     :fields="fields"
+                     @validated="isValid=$event"
+                     :show-warnings="showWarnings">
         </input-group>
+        <button @click="showWarnings=true">Show warnings</button>
         {{ values }}
+        {{ isValid }}
     </div>
 </template>
 
@@ -17,6 +21,8 @@
         },
         data() {
             return {
+                isValid: '',
+                showWarnings: false,
                 values: {
                     name: ""
                 },
