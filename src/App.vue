@@ -36,7 +36,6 @@
                             required: "Это обязательное поле"
                         },
                         config: {
-                            warnY: 'bottom'
                         }
                     }
                 }
@@ -44,3 +43,9 @@
         }
     }
 </script>
+
+<style lang="sass">
+    .validation-label
+        width: 200px
+        height: 40px
+</style>

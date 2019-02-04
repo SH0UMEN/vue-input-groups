@@ -213,17 +213,19 @@
 
     .validation-wrapper
       position: relative
+      height: 100%
 
     .validation-wrapper>input, .vue-tel-input
+      height: 100%
       font-size: 16px
       outline: none
       border: 1px solid #e8e8e8
       border-radius: 5px
       width: 100%
       padding: 10px 10px 10px 10px
-      box-sizing: border-box
       box-shadow: 0 0 0 0 #EE4444
       transition: box-shadow .3s
+      box-sizing: border-box
 
       &::placeholder
         color: #adadad
@@ -270,11 +272,13 @@
         position: absolute
         background-color: #e44
         width: 250px
-        z-index: 100
+        z-index: 1
         display: none
         flex-direction: column
         justify-content: center
-        padding: 12px
+        padding-left: 12px
+        padding-right: 12px
+        height: 100%
         color: white
         span
           display: block
@@ -285,8 +289,10 @@
           position: absolute
           width: 20px
           content: ''
-          top: 10px
+          top: 50%
+          margin-top: -10px
           border: 10px solid transparent
+          box-sizing: content-box
       &:hover
         .errors
           display: flex
