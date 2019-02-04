@@ -1,97 +1,97 @@
 <template>
-  <div class="validation-wrapper"
-       :class="field.customWrapperClass">
     <label class="validation-label"
            :class="[field.customLabelClass, warnX, warnY, (errors.length > 0 && showWarnings) ? 'invalid' : '', isMobile ? 'mobile' : '']"
            :for="field.type=='tel' ? 'helloPupsik' : ''">
       <!-- Field -->
-      <input v-if="field.type=='text' || field.type=='password' || field.type=='email' || field.type=='number'"
-             :type="field.type"
-             :name="fieldName"
-             :placeholder="field.placeholder"
-             :class="field.customInputClass"
-             v-model="value"
-             @input="validate();$emit('input', value)"
-             @blur="validate">
-      <multiselect v-else-if="field.type=='select'"
-                   :options="field.options"
-                   label="label"
-                   trackBy="id"
-                   v-model="value"
-                   :placeholder="field.placeholder"
-                   @input="validate();$emit('input', value)"
-                   :class="field.customInputClass"
-                   :multiple="config.multiple"
-                   :searchable="config.searchable"
-                   :clearOnSelect="config.clearOnSelect"
-                   :hideSelected="config.hideSelected"
-                   :closeOnSelect="config.closeOnSelect"
-                   :taggable="config.taggable"
-                   :tagPlaceholder="config.tagPlaceholder"
-                   :tagPosition="config.tagPosition"
-                   :groupValues="config.groupValues"
-                   :groupLabel="config.groupLabel"
-                   :groupSelect="config.groupSelect"
-                   :internalSearch="config.internalSearch"
-                   :preserveSearch="config.preserveSearch"
-                   :preselectFirst="config.preselectFirst"
-                   :name="config.name"
-                   :selectLabel="config.selectLabel"
-                   :selectGroupLabel="config.selectGroupLabel"
-                   :selectedLabel="config.selectedLabel"
-                   :deselectLabel="config.deselectLabel"
-                   :deselectGroupLabel="config.deselectGroupLabel"
-                   :showLabels="config.showLabels"
-                   :disabled="config.disabled"
-                   :maxHeight="config.maxHeight"
-                   :openDirection="config.openDirection"
-                   :showNoResults="config.showNoResults"
-                   :tabindex="config.tabindex"
-      >
-      </multiselect>
-      <telinput v-else-if="field.type=='tel'"
-                v-model="value"
-                @onInput="validatePhone($event);$emit('input', value)"
-                :class="field.customInputClass"
-                :defaultCountry="config.defaultCountry"
-                :disabledFetchingCountry="config.disabledFetchingCountry"
-                :disabled="config.disabled"
-                :placeholder="config.placeholder"
-                :enabledFlags="config.enabledFlags"
-                :preferredCountries="config.preferredCountries"
-                :onlyCountries="config.onlyCountries"
-                :ignoredCountries="config.ignoredCountries"
-                @onBlur="validatePhone">
-      </telinput>
+      <div class="validation-wrapper"
+           :class="field.customWrapperClass">
+        <input v-if="field.type=='text' || field.type=='password' || field.type=='email' || field.type=='number'"
+               :type="field.type"
+               :name="fieldName"
+               :placeholder="field.placeholder"
+               :class="field.customInputClass"
+               v-model="value"
+               @input="validate();$emit('input', value)"
+               @blur="validate">
+        <multiselect v-else-if="field.type=='select'"
+                     :options="field.options"
+                     label="label"
+                     trackBy="id"
+                     v-model="value"
+                     :placeholder="field.placeholder"
+                     @input="validate();$emit('input', value)"
+                     :class="field.customInputClass"
+                     :multiple="config.multiple"
+                     :searchable="config.searchable"
+                     :clearOnSelect="config.clearOnSelect"
+                     :hideSelected="config.hideSelected"
+                     :closeOnSelect="config.closeOnSelect"
+                     :taggable="config.taggable"
+                     :tagPlaceholder="config.tagPlaceholder"
+                     :tagPosition="config.tagPosition"
+                     :groupValues="config.groupValues"
+                     :groupLabel="config.groupLabel"
+                     :groupSelect="config.groupSelect"
+                     :internalSearch="config.internalSearch"
+                     :preserveSearch="config.preserveSearch"
+                     :preselectFirst="config.preselectFirst"
+                     :name="config.name"
+                     :selectLabel="config.selectLabel"
+                     :selectGroupLabel="config.selectGroupLabel"
+                     :selectedLabel="config.selectedLabel"
+                     :deselectLabel="config.deselectLabel"
+                     :deselectGroupLabel="config.deselectGroupLabel"
+                     :showLabels="config.showLabels"
+                     :disabled="config.disabled"
+                     :maxHeight="config.maxHeight"
+                     :openDirection="config.openDirection"
+                     :showNoResults="config.showNoResults"
+                     :tabindex="config.tabindex"
+        >
+        </multiselect>
+        <telinput v-else-if="field.type=='tel'"
+                  v-model="value"
+                  @onInput="validatePhone($event);$emit('input', value)"
+                  :class="field.customInputClass"
+                  :defaultCountry="config.defaultCountry"
+                  :disabledFetchingCountry="config.disabledFetchingCountry"
+                  :disabled="config.disabled"
+                  :placeholder="config.placeholder"
+                  :enabledFlags="config.enabledFlags"
+                  :preferredCountries="config.preferredCountries"
+                  :onlyCountries="config.onlyCountries"
+                  :ignoredCountries="config.ignoredCountries"
+                  @onBlur="validatePhone">
+        </telinput>
 
-      <!-- Error view -->
-      <transition name="error">
-        <div v-if="errors.length > 0 && showWarnings" class="warning">
-          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-               width="24" height="24"
-               viewBox="0 0 224 224"
-               style=" fill:#000000;">
-            <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1"
-               stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10"
-               stroke-dasharray="" stroke-dashoffset="0" font-family="none"
-               font-weight="none" font-size="none" text-anchor="none"
-               style="mix-blend-mode: normal">
-              <path d="M0,224v-224h224v224z" fill="none"></path>
-              <g fill="#ee4444">
-                <path
-                  d="M210.52267,101.98533l-88.508,-88.508c-5.52533,-5.52533 -14.49467,-5.52533 -20.02,0l-88.508,88.508c-5.52533,5.52533 -5.52533,14.49467 0,20.02l88.508,88.508c5.52533,5.52533 14.49467,5.52533 20.02,0l88.508,-88.508c5.52533,-5.52533 5.52533,-14.48533 0,-20.02zM121.33333,158.66667h-18.66667v-18.66667h18.66667zM121.33333,121.33333h-18.66667v-56h18.66667z"></path>
+        <!-- Error view -->
+        <transition name="error">
+          <div v-if="errors.length > 0 && showWarnings" class="warning">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                 width="24" height="24"
+                 viewBox="0 0 224 224"
+                 style=" fill:#000000;">
+              <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1"
+                 stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10"
+                 stroke-dasharray="" stroke-dashoffset="0" font-family="none"
+                 font-weight="none" font-size="none" text-anchor="none"
+                 style="mix-blend-mode: normal">
+                <path d="M0,224v-224h224v224z" fill="none"></path>
+                <g fill="#ee4444">
+                  <path
+                    d="M210.52267,101.98533l-88.508,-88.508c-5.52533,-5.52533 -14.49467,-5.52533 -20.02,0l-88.508,88.508c-5.52533,5.52533 -5.52533,14.49467 0,20.02l88.508,88.508c5.52533,5.52533 14.49467,5.52533 20.02,0l88.508,-88.508c5.52533,-5.52533 5.52533,-14.48533 0,-20.02zM121.33333,158.66667h-18.66667v-18.66667h18.66667zM121.33333,121.33333h-18.66667v-56h18.66667z"></path>
+                </g>
               </g>
-            </g>
-          </svg>
-          <span class="errors">
-            <span v-for="error in errors" class="error">
-              {{ error }}
+            </svg>
+            <span class="errors">
+              <span v-for="error in errors" class="error">
+                {{ error }}
+              </span>
             </span>
-          </span>
-        </div>
-      </transition>
+          </div>
+        </transition>
+      </div>
     </label>
-  </div>
 </template>
 
 <script>
@@ -115,7 +115,7 @@
       Telinput
     },
     watch: {
-      showWarnngs() {
+      showWarnings() {
         if(this.showWarnings) {
           if(this.field.type == 'tel') {
             this.validatePhone();
@@ -209,10 +209,12 @@
 <style lang="sass">
   .validation-label
     display: block
-    position: relative
     font-size: 16px
 
-    >input, .vue-tel-input
+    .validation-wrapper
+      position: relative
+
+    .validation-wrapper>input, .vue-tel-input
       font-size: 16px
       outline: none
       border: 1px solid #e8e8e8
@@ -225,7 +227,7 @@
 
       &::placeholder
         color: #adadad
-    >input
+    .validation-wrapper>input
       display: block
     .vue-tel-input
       outline: none !important
@@ -365,17 +367,17 @@
               right: -40px
               border-left: 10px solid #e44
     &.invalid
-      >input, .vue-tel-input,.multiselect .multiselect__tags
+      .validation-wrapper>input, .vue-tel-input,.multiselect .multiselect__tags
         box-shadow: 0 0 0 2px #EE4444
       &.right
-        >input, .vue-tel-input, .multiselect .multiselect__tags
+        .validation-wrapper>input, .vue-tel-input, .multiselect .multiselect__tags
           padding-right: 35px
       &.left
-        >input, .vue-tel-input, .multiselect .multiselect__tags
+        .validation-wrapper>input, .vue-tel-input, .multiselect .multiselect__tags
           padding-left: 35px
     &.mobile
       &.invalid.left, &.invalid.right
-        >input, .multiselect .multiselect__tags, .vue-tel-input
+        .validation-wrapper>input, .multiselect .multiselect__tags, .vue-tel-input
           padding-right: 10px
           padding-left: 10px
         .warning

@@ -5,7 +5,9 @@
                      @validated="isValid=$event"
                      :show-warnings="showWarnings">
         </input-group>
+        <input v-model="values.killMeNow" type="text">
         <button @click="showWarnings=true">Show warnings</button>
+        {{ showWarnings }}
         {{ values }}
         {{ isValid }}
     </div>
@@ -24,7 +26,8 @@
                 isValid: '',
                 showWarnings: false,
                 values: {
-                    name: ""
+                    name: "",
+                    killMeNow: ""
                 },
                 fields: {
                     name: {
