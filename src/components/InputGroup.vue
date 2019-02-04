@@ -9,7 +9,7 @@
                      :isMobile="isMobile"
                      @validated="fieldValidated(i, $event)"
                      :showWarnings="showWarnings"
-                     :equalsTo="field.validation ? [value[field.validation.equalsTo.value]] : undefined">
+                     :equalsTo="field.validation && field.validation.equalsTo ? [value[field.validation.equalsTo.value]] : undefined">
     </ValidationLabel>
   </div>
 </template>
