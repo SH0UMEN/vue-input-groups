@@ -41,6 +41,9 @@
                             warnY: "center"
                         }
                     },
+                    password: {
+                        type: 'password'
+                    }
                 }
             }
         }
@@ -49,8 +52,8 @@
 
 <style lang="sass">
     .validation-label
-        width: 200px
-        height: 50px
+        width: 400px
         margin-left: auto
         margin-right: auto
+        margin-bottom: 10px
 </style>

@@ -162,7 +162,7 @@
 
           if (this.field.type == 'email') {
             let emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/igm;
-            this.checkRule(!emailRegex.test(this.value), this.validation ? this.validation.isEmail : 'Enter correct email');
+            this.checkRule(!emailRegex.test(this.value) && this.value.length>0 , this.validation ? this.validation.isEmail : 'Enter correct email');
           }
 
           this.emitValidation();
@@ -406,24 +406,26 @@
           .errors
             margin-left: 0
             margin-right: 0
+            height: 100%
       .warning
         position: static
+        height: unset
         svg
           display: none
         .errors
-          margin-top: 0
-          margin-bottom: 0
           position: static
           display: flex
           width: 90%
-          padding-top: 10px
-          padding-bottom: 9px
           min-height: unset
           margin-left: auto
           margin-right: auto
           max-width: unset
-          border-radius: 0 0 5px 5px
+          .errors-wrapper
+            border-radius: 0 0 5px 5px
           .error
+            position: static
+            margin-left: 0px
+            margin-right: 0px
             text-align: center
           &:after
             display: none
