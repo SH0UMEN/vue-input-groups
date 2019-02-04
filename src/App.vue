@@ -30,7 +30,13 @@
                 },
                 fields: {
                     passOne: {
-                        type: "password",
+                        type: "number",
+                        validation: {
+                            min: {
+                                value: 4,
+                                message: "At least 4"
+                            }
+                        }
                     },
                     passTwo: {
                         type: "password",

@@ -7,7 +7,7 @@
       <div class="validation-wrapper"
            :class="field.customWrapperClass">
         <input v-if="field.type=='text' || field.type=='password' || field.type=='email' || field.type=='number'"
-               :type="field.type"
+               :type="field.type != 'email' ? field.type : 'text'"
                :name="fieldName"
                :placeholder="field.placeholder"
                :class="field.customInputClass"
@@ -150,21 +150,40 @@
     methods: {
       validate() {
         if (this.validation) {
-          //Required
-          if (this.validation.hasOwnProperty('required')) {
-            this.checkRule(!this.value, this.validation.required);
+          //only for type Number
+          if(this.field.type == 'number') {
+            //Required
+            if (this.validation.hasOwnProperty('required')) {
+              this.checkRule(this.value == 0, this.validation.required);
+            }
+
+            //Minimal length
+            if (this.validation.hasOwnProperty('min')) {
+              this.checkRule(this.validation.min.value > this.value, this.validation.min.message);
+            }
+
+            //Maximal length
+            if (this.validation.hasOwnProperty('max')) {
+              this.checkRule(this.validation.max.value < this.value, this.validation.max.message);
+            }
+          } else {
+            //Required
+            if (this.validation.hasOwnProperty('required')) {
+              this.checkRule(!this.value, this.validation.required);
+            }
+
+            //Minimal length
+            if (this.validation.hasOwnProperty('min')) {
+              this.checkRule(this.validation.min.value > this.value.length, this.validation.min.message);
+            }
+
+            //Maximal length
+            if (this.validation.hasOwnProperty('max')) {
+              this.checkRule(this.validation.max.value < this.value.length, this.validation.max.message);
+            }
           }
 
-          //Minimal length
-          if (this.validation.hasOwnProperty('min')) {
-            this.checkRule(this.validation.min.value > this.value.length, this.validation.min.message);
-          }
-
-          //Maximal length
-          if (this.validation.hasOwnProperty('max')) {
-            this.checkRule(this.validation.max.value < this.value.length, this.validation.max.message);
-          }
-
+          //Email validation
           if (this.field.type == 'email') {
             let emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/igm;
             this.checkRule(!emailRegex.test(this.value) && this.value.length>0 , this.validation ? this.validation.isEmail : 'Enter correct email');
@@ -418,6 +437,8 @@
         svg
           display: none
         .errors
+          margin-top: 0
+          margin-bottom: 0
           position: static
           display: flex
           width: 90%
