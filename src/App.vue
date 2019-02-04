@@ -26,18 +26,21 @@
                 isValid: '',
                 showWarnings: false,
                 values: {
-                    name: "",
+                    email: "",
                     killMeNow: ""
                 },
                 fields: {
-                    name: {
-                        type: "text",
+                    email: {
+                        type: 'email',
                         validation: {
-                            required: "Это обязательное поле"
+                            isEmail: "Введите корректный email",
+                            required: "Поле должно быть заполнено"
                         },
                         config: {
+                            warnX: "right",
+                            warnY: "center"
                         }
-                    }
+                    },
                 }
             }
         }
@@ -47,5 +50,7 @@
 <style lang="sass">
     .validation-label
         width: 200px
-        height: 40px
+        height: 50px
+        margin-left: auto
+        margin-right: auto
 </style>

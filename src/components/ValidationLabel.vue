@@ -1,7 +1,8 @@
 <template>
     <label class="validation-label"
            :class="[field.customLabelClass, warnX, warnY, (errors.length > 0 && showWarnings) ? 'invalid' : '', isMobile ? 'mobile' : '']"
-           :for="field.type=='tel' ? 'helloPupsik' : ''">
+           :for="field.type=='tel' ? 'helloPupsik' : ''"
+           ref="label">
       <!-- Field -->
       <div class="validation-wrapper"
            :class="field.customWrapperClass">
@@ -83,11 +84,13 @@
                 </g>
               </g>
             </svg>
-            <span class="errors">
-              <span v-for="error in errors" class="error">
-                {{ error }}
-              </span>
-            </span>
+            <div class="errors">
+              <div class="errors-wrapper">
+                <span v-for="error in errors" class="error">
+                  {{ error }}
+                </span>
+              </div>
+            </div>
           </div>
         </transition>
       </div>
@@ -270,20 +273,29 @@
 
       .errors
         position: absolute
-        background-color: #e44
         width: 250px
         z-index: 1
         display: none
-        flex-direction: column
-        justify-content: center
-        padding-left: 12px
-        padding-right: 12px
-        height: 100%
+        align-items: center
         color: white
+        .errors-wrapper
+          display: flex
+          flex-direction: column
+          justify-content: center
+          position: relative
+          left: 0
+          top: 0
+          width: 100%
+          background-color: #e44
+          padding-bottom: 11px
+          padding-top: 5px
         span
           display: block
           width: 100%
           text-align: left
+          margin-top: 6px
+          margin-left: 12px
+          margin-right: 12px
         &:after
           display: block
           position: absolute
@@ -313,6 +325,7 @@
             border: 10px solid transparent
             border-top: 10px solid #e44
             bottom: -20px
+            margin-top: -0px
             top: unset
     &.bottom
       .warning
@@ -324,6 +337,7 @@
             border: 10px solid transparent
             border-bottom: 10px solid #e44
             top: -20px
+            margin-top: 0
     &.right
       .warning
         right: 5px
@@ -342,9 +356,10 @@
       &.center
         .warning
           .errors
-            top: 0
-            margin-left: 15px
             left: 100%
+            margin-left: 15px
+            height: 0
+            top: 50%
             &:after
               left: -40px
               border-right: 10px solid #e44
@@ -366,9 +381,10 @@
       &.center
         .warning
           .errors
+            height: 0
             margin-right: 15px
             right: 100%
-            top: 0
+            top: 50%
             &:after
               right: -40px
               border-left: 10px solid #e44
