@@ -5,7 +5,6 @@
                      @validated="isValid=$event"
                      :show-warnings="showWarnings">
         </input-group>
-        <input v-model="values.killMeNow" type="text">
         <button @click="showWarnings=true">Show warnings</button>
         {{ showWarnings }}
         {{ values }}
@@ -26,23 +25,21 @@
                 isValid: '',
                 showWarnings: false,
                 values: {
-                    email: "",
-                    killMeNow: ""
+                    passOne: "",
+                    passTwo: ""
                 },
                 fields: {
-                    email: {
-                        type: 'email',
-                        validation: {
-                            isEmail: "Введите корректный email",
-                            required: "Поле должно быть заполнено"
-                        },
-                        config: {
-                            warnX: "right",
-                            warnY: "center"
-                        }
+                    passOne: {
+                        type: "password",
                     },
-                    password: {
-                        type: 'password'
+                    passTwo: {
+                        type: "password",
+                        validation: {
+                            equalsTo: {
+                                value: "passOne",
+                                message: "Пароли не совпадают"
+                            }
+                        }
                     }
                 }
             }

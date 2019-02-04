@@ -111,13 +111,18 @@
         type: Boolean,
         default: false
       },
-      showWarnings: Boolean
+      showWarnings: Boolean,
+      equalsTo: Array
     },
     components: {
       Multiselect,
       Telinput
     },
     watch: {
+      equalsTo() {
+        this.checkRule(this.equalsTo != this.value, this.validation.equalsTo.message);
+        this.emitValidation();
+      },
       showWarnings() {
         if(this.showWarnings) {
           if(this.field.type == 'tel') {

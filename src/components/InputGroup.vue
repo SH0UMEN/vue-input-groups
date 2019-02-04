@@ -8,7 +8,8 @@
                      :ref="i+'-field'"
                      :isMobile="isMobile"
                      @validated="fieldValidated(i, $event)"
-                     :showWarnings="showWarnings">
+                     :showWarnings="showWarnings"
+                     :equalsTo="field.validation ? [value[field.validation.equalsTo.value]] : undefined">
     </ValidationLabel>
   </div>
 </template>
