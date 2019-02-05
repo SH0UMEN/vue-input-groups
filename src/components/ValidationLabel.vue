@@ -1,6 +1,6 @@
 <template>
     <label class="validation-label"
-           :class="[field.customLabelClass, warnX, warnY, ((errors.length > 0 || field.messages.length > 0) && showWarnings) ? 'invalid' : '', isMobile ? 'mobile' : '']"
+           :class="[field.customLabelClass, warnX, warnY, ((errors.length > 0 || (field.messages && field.messages.length > 0)) && showWarnings) ? 'invalid' : '', isMobile ? 'mobile' : '']"
            :for="field.type=='tel' ? 'helloPupsik' : ''"
            ref="label">
       <!-- Field -->
@@ -67,7 +67,7 @@
 
         <!-- Error view -->
         <transition name="error">
-          <div v-if="(errors.length > 0 || field.messages.length > 0) && showWarnings" class="warning">
+          <div v-if="(errors.length > 0 || (field.messages && field.messages.length > 0)) && showWarnings" class="warning">
             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                  width="24" height="24"
                  viewBox="0 0 224 224"
