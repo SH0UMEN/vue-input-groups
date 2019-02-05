@@ -31,6 +31,9 @@
                 fields: {
                     passOne: {
                         type: "number",
+                        messages: [
+                            "Пароль неверен"
+                        ],
                         validation: {
                             min: {
                                 value: 4,

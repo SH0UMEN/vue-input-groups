@@ -89,6 +89,9 @@
                 <span v-for="error in errors" class="error">
                   {{ error }}
                 </span>
+                <span v-for="message in field.messages" class="error">
+                  {{ message }}
+                </span>
               </div>
             </div>
           </div>
