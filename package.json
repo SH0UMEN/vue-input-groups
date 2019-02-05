@@ -2,6 +2,7 @@
   "name": "vue-input-groups",
   "version": "0.1.6",
   "main": "./dist/VueInputGroups.common.js",
+  "repository": "github:SH0UMEN/vue-input-groups",
   "files": [
     "dist/*"
   ],
