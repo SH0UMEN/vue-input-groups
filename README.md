@@ -1,7 +1,7 @@
-#Vue Input Groups
+# Vue Input Groups
 Vue input groups with validation
 
-#Usage
+# Usage
 Import package in your project:
 
 ```Javascript
