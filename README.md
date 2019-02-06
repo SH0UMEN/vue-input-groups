@@ -1,7 +1,9 @@
 # Vue Input Groups
 Vue input groups with validation
 
-# Usage
+[Demo and guide](www.google.com)
+
+## Usage
 Import package in your project:
 
 ```Javascript
@@ -29,3 +31,36 @@ new Vue({
     }
 })
 ```
+Then, you should make data-container and field description
+```javascript
+//...
+components: {
+    InputGroups
+},
+data() {
+    return {
+        formValue: {
+            name: "",
+            password: "",
+        },
+        fields: {
+            //keys have to be named as well as keys in formValue
+            name: {
+                type: "text",
+                placeholder: "Enter your name"
+            },
+            password: {
+                type: "password",
+                placeholder: "Enter password"
+            }
+        }
+    } 
+}
+```
+Now, you can make input group in your app
+```html
+<input-group v-model="formValue"
+             :fields="fields">
+</input-group>
+```
+For more information, go to [docs](www.google.com)
