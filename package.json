@@ -1,6 +1,6 @@
 {
   "name": "vue-input-groups",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "main": "./dist/VueInputGroups.common.js",
   "repository": "github:SH0UMEN/vue-input-groups",
   "license": "MIT",
