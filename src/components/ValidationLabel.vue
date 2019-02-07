@@ -444,13 +444,19 @@
           margin-bottom: 0
           position: static
           display: flex
-          width: 90%
+          width: unset
+          min-width: 50%
+          max-width: 80%
           min-height: unset
           margin-left: auto
           margin-right: auto
           max-width: unset
           .input-group__errors-wrapper
             border-radius: 0 0 5px 5px
+            padding-bottom: 5px
+            padding-top: 0
+            padding-left: 15px
+            padding-right: 15px
           .input-group__error
             position: static
             margin-left: 0px

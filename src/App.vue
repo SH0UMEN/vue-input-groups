@@ -3,7 +3,8 @@
         <input-group v-model="values"
                      :fields="fields"
                      @validated="isValid=$event"
-                     :show-warnings="showWarnings">
+                     :show-warnings="showWarnings"
+                     :breakpoint="2000">
         </input-group>
         <button @click="showWarnings=true">Show warnings</button>
         {{ showWarnings }}
@@ -59,7 +60,7 @@
 </script>
 
 <style lang="sass">
-    .validation-label
+    .input-group__label
         width: 400px
         margin-left: auto
         margin-right: auto
