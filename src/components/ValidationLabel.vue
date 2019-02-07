@@ -1,6 +1,6 @@
 <template>
     <label class="input-group__label"
-           :class="[field.customLabelClass, warnX, warnY, ((errors.length > 0 || (field.messages && field.messages.length > 0)) && showWarnings) ? 'invalid' : '', isMobile ? 'mobile' : '']"
+           :class="[field.customLabelClass, `vig-${warnX}`, `vig-${warnY}`, ((errors.length > 0 || (field.messages && field.messages.length > 0)) && showWarnings) ? 'invalid' : '', isMobile ? 'mobile' : '']"
            :for="field.type=='tel' ? 'helloPupsik' : ''"
            ref="label">
       <!-- Field -->
@@ -341,7 +341,7 @@
 
       &.error-enter, &.error-leave-to
         opacity: 0
-    &.top
+    &.vig-top
       .input-group__warning
         .input-group__errors
           bottom: 100%
@@ -354,7 +354,7 @@
             bottom: -20px
             margin-top: -0px
             top: unset
-    &.bottom
+    &.vig-bottom
       .input-group__warning
         .input-group__errors
           top: 100%
@@ -365,22 +365,22 @@
             border-bottom: 10px solid #e44
             top: -20px
             margin-top: 0
-    &.right
+    &.vig-right
       .input-group__warning
         right: 5px
-      &.top
+      &.vig-top
         .input-group__warning
           .input-group__errors
             right: -7px
             &:after
               right: 9px
-      &.bottom
+      &.vig-bottom
         .input-group__warning
           .input-group__errors
             right: -7px
             &:after
               right: 9px
-      &.center
+      &.vig-center
         .input-group__warning
           .input-group__errors
             left: 100%
@@ -393,19 +393,19 @@
     &.left
       .input-group__warning
         left: 5px
-      &.top
+      &.vig-top
         .input-group__warning
           .input-group__errors
             left: -7px
             &:after
               left: 8px
-      &.bottom
+      &.vig-bottom
         .warning
           .errors
             left: -7px
             &:after
               left: 9px
-      &.center
+      &.vig-center
         .input-group__warning
           .input-group__errors
             height: 0
@@ -418,14 +418,14 @@
     &.invalid
       .input-group__wrapper>input, .vue-tel-input,.multiselect .multiselect__tags
         box-shadow: 0 0 0 2px #EE4444
-      &.right
+      &.vig-right
         .input-group__wrapper>input, .vue-tel-input, .multiselect .multiselect__tags
           padding-right: 35px
-      &.left
+      &.vig-left
         .input-group__wrapper>input, .vue-tel-input, .multiselect .multiselect__tags
           padding-left: 35px
     &.mobile
-      &.invalid.left, &.invalid.right
+      &.invalid.vig-left, &.invalid.vig-right
         .input-group__wrapper>input, .multiselect .multiselect__tags, .vue-tel-input
           padding-right: 10px
           padding-left: 10px
