@@ -9,6 +9,8 @@
         {{ showWarnings }}
         {{ values }}
         {{ isValid }}
+        <pre><code class="Javascript language-Javascript">var n = 34;
+</code></pre>
     </div>
 </template>
 

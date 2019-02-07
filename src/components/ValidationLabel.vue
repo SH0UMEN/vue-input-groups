@@ -1,10 +1,10 @@
 <template>
-    <label class="validation-label"
+    <label class="input-group__label"
            :class="[field.customLabelClass, warnX, warnY, ((errors.length > 0 || (field.messages && field.messages.length > 0)) && showWarnings) ? 'invalid' : '', isMobile ? 'mobile' : '']"
            :for="field.type=='tel' ? 'helloPupsik' : ''"
            ref="label">
       <!-- Field -->
-      <div class="validation-wrapper"
+      <div class="input-group__wrapper"
            :class="field.customWrapperClass">
         <input v-if="field.type=='text' || field.type=='password' || field.type=='email' || field.type=='number'"
                :type="field.type != 'email' ? field.type : 'text'"
@@ -67,7 +67,7 @@
 
         <!-- Error view -->
         <transition name="error">
-          <div v-if="(errors.length > 0 || (field.messages && field.messages.length > 0)) && showWarnings" class="warning">
+          <div v-if="(errors.length > 0 || (field.messages && field.messages.length > 0)) && showWarnings" class="input-group__warning">
             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                  width="24" height="24"
                  viewBox="0 0 224 224"
@@ -84,12 +84,12 @@
                 </g>
               </g>
             </svg>
-            <div class="errors">
-              <div class="errors-wrapper">
-                <span v-for="error in errors" class="error">
+            <div class="input-group__errors">
+              <div class="input-group__errors-wrapper">
+                <span v-for="error in errors" class="input-group__error">
                   {{ error }}
                 </span>
-                <span v-for="message in field.messages" class="error">
+                <span v-for="message in field.messages" class="input-group__error">
                   {{ message }}
                 </span>
               </div>
@@ -237,15 +237,15 @@
 
 
 <style lang="sass">
-  .validation-label
+  .input-group__label
     display: block
     font-size: 16px
 
-    .validation-wrapper
+    .input-group__wrapper
       position: relative
       height: 100%
 
-    .validation-wrapper>input, .vue-tel-input
+    .input-group__wrapper>input, .vue-tel-input
       height: 100%
       font-size: 16px
       outline: none
@@ -259,7 +259,7 @@
 
       &::placeholder
         color: #adadad
-    .validation-wrapper>input
+    .input-group__wrapper>input
       display: block
     .vue-tel-input
       outline: none !important
@@ -290,7 +290,7 @@
       .multiselect__content-wrapper
         border: none
 
-    .warning
+    .input-group__warning
       position: absolute
       top: 0
       height: 100%
@@ -298,14 +298,14 @@
       align-items: center
       justify-content: center
 
-      .errors
+      .input-group__errors
         position: absolute
         width: 250px
         z-index: 1
         display: none
         align-items: center
         color: white
-        .errors-wrapper
+        .input-group__errors-wrapper
           display: flex
           flex-direction: column
           justify-content: center
@@ -333,7 +333,7 @@
           border: 10px solid transparent
           box-sizing: content-box
       &:hover
-        .errors
+        .input-group__errors
           display: flex
 
       &.error-enter-active, &.error-leave-active
@@ -342,8 +342,8 @@
       &.error-enter, &.error-leave-to
         opacity: 0
     &.top
-      .warning
-        .errors
+      .input-group__warning
+        .input-group__errors
           bottom: 100%
           top: unset
           margin-bottom: 15px
@@ -355,8 +355,8 @@
             margin-top: -0px
             top: unset
     &.bottom
-      .warning
-        .errors
+      .input-group__warning
+        .input-group__errors
           top: 100%
           margin-top: 15px
           &:after
@@ -366,23 +366,23 @@
             top: -20px
             margin-top: 0
     &.right
-      .warning
+      .input-group__warning
         right: 5px
       &.top
-        .warning
-          .errors
+        .input-group__warning
+          .input-group__errors
             right: -7px
             &:after
               right: 9px
       &.bottom
-        .warning
-          .errors
+        .input-group__warning
+          .input-group__errors
             right: -7px
             &:after
               right: 9px
       &.center
-        .warning
-          .errors
+        .input-group__warning
+          .input-group__errors
             left: 100%
             margin-left: 15px
             height: 0
@@ -391,11 +391,11 @@
               left: -40px
               border-right: 10px solid #e44
     &.left
-      .warning
+      .input-group__warning
         left: 5px
       &.top
-        .warning
-          .errors
+        .input-group__warning
+          .input-group__errors
             left: -7px
             &:after
               left: 8px
@@ -406,8 +406,8 @@
             &:after
               left: 9px
       &.center
-        .warning
-          .errors
+        .input-group__warning
+          .input-group__errors
             height: 0
             margin-right: 15px
             right: 100%
@@ -416,30 +416,30 @@
               right: -40px
               border-left: 10px solid #e44
     &.invalid
-      .validation-wrapper>input, .vue-tel-input,.multiselect .multiselect__tags
+      .input-group__wrapper>input, .vue-tel-input,.multiselect .multiselect__tags
         box-shadow: 0 0 0 2px #EE4444
       &.right
-        .validation-wrapper>input, .vue-tel-input, .multiselect .multiselect__tags
+        .input-group__wrapper>input, .vue-tel-input, .multiselect .multiselect__tags
           padding-right: 35px
       &.left
-        .validation-wrapper>input, .vue-tel-input, .multiselect .multiselect__tags
+        .input-group__wrapper>input, .vue-tel-input, .multiselect .multiselect__tags
           padding-left: 35px
     &.mobile
       &.invalid.left, &.invalid.right
-        .validation-wrapper>input, .multiselect .multiselect__tags, .vue-tel-input
+        .input-group__wrapper>input, .multiselect .multiselect__tags, .vue-tel-input
           padding-right: 10px
           padding-left: 10px
-        .warning
-          .errors
+        .input-group__warning
+          .input-group__errors
             margin-left: 0
             margin-right: 0
             height: 100%
-      .warning
+      .input-group__warning
         position: static
         height: unset
         svg
           display: none
-        .errors
+        .input-group__errors
           margin-top: 0
           margin-bottom: 0
           position: static
@@ -449,9 +449,9 @@
           margin-left: auto
           margin-right: auto
           max-width: unset
-          .errors-wrapper
+          .input-group__errors-wrapper
             border-radius: 0 0 5px 5px
-          .error
+          .input-group__error
             position: static
             margin-left: 0px
             margin-right: 0px
