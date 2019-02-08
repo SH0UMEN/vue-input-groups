@@ -32,25 +32,10 @@
                     passTwo: ""
                 },
                 fields: {
-                    passOne: {
-                        type: "number",
-                        messages: [
-                            "Пароль неверен"
-                        ],
-                        validation: {
-                            min: {
-                                value: 4,
-                                message: "At least 4"
-                            }
-                        }
-                    },
                     passTwo: {
                         type: "password",
                         validation: {
-                            equalsTo: {
-                                value: "passOne",
-                                message: "Пароли не совпадают"
-                            }
+                            required: "La la la"
                         }
                     }
                 }

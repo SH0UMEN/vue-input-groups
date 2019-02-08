@@ -153,6 +153,8 @@
     methods: {
       validate() {
         if (this.validation) {
+          //Copy of value with trip
+          let tempValue = typeof(this.value) == "string" ? this.value.trim() : this.value;
           //only for type Number
           if(this.field.type == 'number') {
             //Required
@@ -172,24 +174,24 @@
           } else {
             //Required
             if (this.validation.hasOwnProperty('required')) {
-              this.checkRule(!this.value, this.validation.required);
+              this.checkRule(!tempValue, this.validation.required);
             }
 
             //Minimal length
             if (this.validation.hasOwnProperty('min')) {
-              this.checkRule(this.validation.min.value > this.value.length, this.validation.min.message);
+              this.checkRule(this.validation.min.value > tempValue.length, this.validation.min.message);
             }
 
             //Maximal length
             if (this.validation.hasOwnProperty('max')) {
-              this.checkRule(this.validation.max.value < this.value.length, this.validation.max.message);
+              this.checkRule(this.validation.max.value < tempValue.length, this.validation.max.message);
             }
           }
 
           //Email validation
           if (this.field.type == 'email') {
             let emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/igm;
-            this.checkRule(!emailRegex.test(this.value) && this.value.length>0 , this.validation ? this.validation.isEmail : 'Enter correct email');
+            this.checkRule(!emailRegex.test(tempValue) && tempValue.length>0 , this.validation ? this.validation.isEmail : 'Enter correct email');
           }
 
           this.emitValidation();
