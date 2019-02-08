@@ -1,7 +1,7 @@
 # Vue Input Groups
 Vue input groups with validation
 
-[Demo and guide]() (Still in progress)
+[Demo and guide](https://sh0umen.github.io/)
 
 ## Usage
 Import package in your project:
@@ -63,4 +63,4 @@ Now, you can make input group in your app
              :fields="fields">
 </input-group>
 ```
-For more information, go to [docs]()
+For more information, go to [docs](https://sh0umen.github.io/)
